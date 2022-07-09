@@ -19,7 +19,7 @@ export const getServerSideProps = async (context) => {
 
 export default function Home() {
   let data;
-  const getCocktails=() => axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a').then((response) => data = response.data)
+  const getCocktails=() => axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=').then((response) => data = response.data)
   const {data: mn} = useQuery('cocktails', getCocktails)
   console.log(mn)
   return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
