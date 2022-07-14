@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 function booleanFilter (...classes) {
-    return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(" ")
 }
 
 
