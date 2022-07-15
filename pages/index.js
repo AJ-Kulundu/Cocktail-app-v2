@@ -21,7 +21,7 @@ export const getServerSideProps = async (context) => {
 
 export default function Home() {
   const [search, setSearch] = useState("");
-  const { isLoading, isSuccess, isError, data, error } = useQuery(
+  const { isLoading, isError, data, error } = useQuery(
     ["cocktails", search],
     () =>
       axios.get(
@@ -29,12 +29,32 @@ export default function Home() {
       )
   );
   return (
-    <div>
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 p-6">
-      {data?.data?.drinks.map((drink, id) => (
-        <DisplayDrink key={id} cocktail={drink} />
-      ))}
-    </div>
+    <div className="px-6 py-8">
+      {isError ? (
+        <div>
+          <h1>Error: {error}</h1>
+        </div>
+      ) : isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <div className="flex p-4 w-full justify-center">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="border p-2 rounded-lg"
+            />
+          </div>
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {data?.data?.drinks.map((drink, id) => (
+              <DisplayDrink key={id} cocktail={drink} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
