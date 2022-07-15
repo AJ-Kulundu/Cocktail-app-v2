@@ -30,28 +30,39 @@ export default function Home() {
   );
   return (
     <div className="px-6 py-8">
+      {error ? null : (
+        <div className="flex p-4 mb-2 w-full justify-center">
+          <input
+            type="text"
+            name="search"
+            id="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border p-2 rounded-lg"
+          />
+        </div>
+      )}
       {isError ? (
-        <div>
+        <div className="flex w-full justify-center p-4">
           <h1>Error: {error}</h1>
         </div>
       ) : isLoading ? (
-        <h1>Loading...</h1>
+        <div className="flex w-full justify-center p-4">
+          <h1>Loading...</h1>
+        </div>
       ) : (
         <>
-          <div className="flex p-4 w-full justify-center">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="border p-2 rounded-lg"
-            />
-          </div>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
-            {data?.data?.drinks.map((drink, id) => (
-              <DisplayDrink key={id} cocktail={drink} />
-            ))}
+            {data?.data?.drinks ? (
+              data?.data?.drinks.map((drink, id) => (
+                <DisplayDrink key={id} cocktail={drink} />
+              ))
+            ) : (
+              <div className="flex w-full justify-center p-4">
+                {" "}
+                <h1>Cocktail not found</h1>
+              </div>
+            )}
           </div>
         </>
       )}
