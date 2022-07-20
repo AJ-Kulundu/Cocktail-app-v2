@@ -6,7 +6,7 @@ function booleanFilter (...classes) {
 }
 
 
-const DisplayDrink = (cocktail) => {
+const DisplayDrink = ({cocktail}) => {
     const [loading,setLoading] = useState(true);
   
     return(
@@ -14,7 +14,7 @@ const DisplayDrink = (cocktail) => {
         <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg">
         <Image
           alt=" "
-          src={!cocktail.cocktail.strDrinkThumb ? "https://bit.ly/placeholder-img" : cocktail.cocktail.strDrinkThumb}
+          src={!cocktail.strDrinkThumb ? "https://bit.ly/placeholder-img" : cocktail.strDrinkThumb}
           layout="fill"
           objectFit="cover"
           className={booleanFilter(
@@ -26,8 +26,8 @@ const DisplayDrink = (cocktail) => {
           onLoadingComplete={() => setLoading(false)}
         />
         </div>
-        <h1>{cocktail.cocktail.strDrink}</h1>
-        <h3>{cocktail.cocktail.strCategory}</h3>
+        <h1>{cocktail.strDrink}</h1>
+        <h3>{cocktail.strCategory}</h3>
         </div>
     )
 }
