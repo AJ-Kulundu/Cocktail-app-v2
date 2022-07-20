@@ -10,8 +10,7 @@ export const getServerSideProps = async (context) => {
   await queryClient.prefetchQuery(["cocktails"], () =>
     axios
       .get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
-      .then((response) => (data = response.data))
-      .catch((err) => (error = err))
+      .then((response) => (response.data))
   );
 
   return {
