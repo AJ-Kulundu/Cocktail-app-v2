@@ -10,6 +10,7 @@ export const getServerSideProps = async (context) => {
     axios
       .get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
       .then((response) => (data = response.data))
+      .catch((err) => (error = err))
   );
 
   return {
