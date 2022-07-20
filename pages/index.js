@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { dehydrate, QueryClient, useQuery } from "react-query";
 import DisplayDrink from "../components/DisplayDrink";
+import Loading from "../components/Loader";
 
 export const getServerSideProps = async (context) => {
   const queryClient = new QueryClient();
@@ -49,7 +50,7 @@ export default function Home() {
         </div>
       ) : isLoading ? (
         <div className="flex w-full justify-center p-4">
-          <h1>Loading...</h1>
+          <Loading />
         </div>
       ) : (
         <>

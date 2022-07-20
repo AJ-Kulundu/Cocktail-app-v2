@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import "../styles/Loader.scss"
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { useState } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools'
