@@ -24,7 +24,7 @@ const NavBar = () => {
     }
   };
   return (
-    <div className="flex sticky flex-row z-20 bg-white/30 justify-between items-center w-full py-4 px-8 top-0 backdrop-blur-md">
+    <div className="flex sticky flex-row z-20 bg-white/30 justify-between items-center w-full py-4 px-8 top-0 shadow-sm backdrop-blur-md">
       <h1 className="font-bold text-xl">Cocktails</h1>
       <div className="flex flex-row justify-between w-1/6 mr-6">
         {renderTheme()}
