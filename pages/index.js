@@ -7,8 +7,8 @@ import Loading from "../components/Loader";
 export const getServerSideProps = async (context) => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(["cocktails"], () =>
-    axios
+  await queryClient.prefetchQuery("cocktails", async () =>
+     await axios
       .get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
       .then((response) => (response.data))
   );

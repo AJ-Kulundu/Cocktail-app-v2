@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
-function booleanFilter(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { booleanFilter } from '../utils/BooleanFilter';
 
 const DisplayDrink = ({ cocktail }) => {
   const [loading, setLoading] = useState(true);
@@ -33,13 +30,14 @@ const DisplayDrink = ({ cocktail }) => {
             onClick={() => router.push(`/${cocktail.idDrink}`)}
           />
         </div>
-        <h1
+        <a 
+        href={`/${cocktail.idDrink}`}
           className="text-md hover:underline font-medium group-hover:tracking-wide group-hover:font-bold"
           onClick={() => router.push(`/${cocktail.idDrink}`)}
         >
           {cocktail.strDrink}
-        </h1>
-        <h3 className="text-lg font-semibold group-hover:tracking-wide">{cocktail.strCategory}</h3>
+        </a>
+        <h3 className="text-lg">{cocktail.strCategory}</h3>
       </div>
     </div>
   );
