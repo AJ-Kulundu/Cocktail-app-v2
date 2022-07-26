@@ -3,7 +3,7 @@ import Loader from 'react-loaders';
 
 const Loading = () => {
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex w-full justify-center place-items-center h-screen">
         <Loader type="pacman" />
     </div>
   )
