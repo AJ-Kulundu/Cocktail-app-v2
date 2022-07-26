@@ -7,10 +7,10 @@ import Loading from "../components/Loader";
 export const getServerSideProps = async (context) => {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery("cocktails", async () =>
-     await axios
+  await queryClient.prefetchQuery("cocktails", () =>
+    axios
       .get("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
-      .then((response) => (response.data))
+      .then((response) => response.data)
   );
 
   return {
@@ -30,16 +30,17 @@ export default function Home() {
       )
   );
   return (
-    <div className="px-6 py-8">
+    <div className="px-6 py-8 h-full">
       {error ? null : (
-        <div className="flex p-4 mb-2 w-full justify-center">
+        <div className="flex p-2 mb-2 w-full justify-center">
           <input
             type="text"
             name="search"
             id="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="border p-2 rounded-lg"
+            className="border-2 p-2 rounded-lg"
+            placeholder="Search"
           />
         </div>
       )}
@@ -48,7 +49,7 @@ export default function Home() {
           <h1>Error: {error}</h1>
         </div>
       ) : isLoading ? (
-        <div className="flex w-full justify-center p-4">
+        <div>
           <Loading />
         </div>
       ) : (
