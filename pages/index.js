@@ -30,9 +30,11 @@ export default function Home() {
       )
   );
   return (
-    <div className="px-6 py-8 h-full">
+    <div className="px-6 py-8">
       {error ? null : (
-        <div className="flex p-2 mb-2 w-full justify-center">
+        <div className="flex  mb-2 w-full justify-center ">
+          <div className="flex flex-col gap-y-2 p-4 bg-white/30 rounded-lg items-center shadow-sm z-10">
+          <h1 className="capitalize sm:text-md md:text-lg md:tracking-wide">Search Your favourite cocktail</h1>
           <input
             type="text"
             name="search"
@@ -42,6 +44,7 @@ export default function Home() {
             className="border-2 p-2 rounded-lg"
             placeholder="Search"
           />
+          </div>
         </div>
       )}
       {isError ? (
