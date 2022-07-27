@@ -38,7 +38,7 @@ const NavBar = () => {
           <NavLink href={"/"} isOpen={isOpen} setIsOpen={setIsOpen}>
             Home
           </NavLink>
-          <NavLink href={"/"} isOpen={isOpen} setIsOpen={setIsOpen}>
+          <NavLink href={"/about"} isOpen={isOpen} setIsOpen={setIsOpen}>
             About
           </NavLink>
         </div>
@@ -49,10 +49,10 @@ const NavBar = () => {
       </div>
       {isOpen && (
         <div className="relative flex flex-col sm:display-inline md:hidden w-full p-4 gap-y-2 justify-center items-center">
-          <NavLink href={"/Home"} isOpen={isOpen} setIsOpen={setIsOpen}>
+          <NavLink href={"/"} isOpen={isOpen} setIsOpen={setIsOpen}>
             Home
           </NavLink>
-          <NavLink href={"/Home"} isOpen={isOpen} setIsOpen={setIsOpen}>
+          <NavLink href={"/about"} isOpen={isOpen} setIsOpen={setIsOpen}>
             About
           </NavLink>
         </div>
