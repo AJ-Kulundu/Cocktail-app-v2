@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon, XIcon, MenuIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,24 +32,45 @@ const NavBar = () => {
   return (
     <div className="flex sticky flex-col z-20 bg-white/30 top-0 shadow-sm backdrop-blur-md">
       <div className="flex flex-row justify-between items-center w-full py-4 px-8">
-      <h1 className="font-bold text-xl">Cocktails</h1>
-      <div className="hidden md:flex flex-row justify-between w-1/6 mr-6">
-        {renderTheme()}
-        <h1 className="font-semibold">Home</h1>
-        <h1 className="font-semibold">About</h1>
-      </div>
-      <div className="flex md:hidden flex-row justify-between w-1/5 ">
-        {renderTheme()}
-        {menuToggle()}
-      </div>
+        <h1 className="font-bold text-xl"><NavLink href={"/"}>Cocktails</NavLink></h1>
+        <div className="hidden md:flex flex-row justify-between w-1/6">
+          {renderTheme()}
+          <NavLink href={"/"} isOpen={isOpen} setIsOpen={setIsOpen}>
+            Home
+          </NavLink>
+          <NavLink href={"/"} isOpen={isOpen} setIsOpen={setIsOpen}>
+            About
+          </NavLink>
+        </div>
+        <div className="flex md:hidden flex-row justify-between w-1/5">
+          {renderTheme()}
+          {menuToggle()}
+        </div>
       </div>
       {isOpen && (
         <div className="relative flex flex-col sm:display-inline md:hidden w-full p-4 gap-y-2 justify-center items-center">
-          <h1 className="font-semibold">Home</h1>
-          <h1 className="font-semibold">About</h1>
+          <NavLink href={"/Home"} isOpen={isOpen} setIsOpen={setIsOpen}>
+            Home
+          </NavLink>
+          <NavLink href={"/Home"} isOpen={isOpen} setIsOpen={setIsOpen}>
+            About
+          </NavLink>
         </div>
       )}
     </div>
+  );
+};
+
+const NavLink = ({ children, href, isOpen, setIsOpen }) => {
+  return (
+    <Link href={href} passHref>
+      <a
+        className="text-md font-semibold"
+        onClick={isOpen && setIsOpen ? setIsOpen(false) : null}
+      >
+        {children}
+      </a>
+    </Link>
   );
 };
 
