@@ -5,6 +5,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { ThemeProvider } from "next-themes";
+import Header from '../components/Header';
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.deHydratedState}>
         <ThemeProvider enableSystem={true} attribute="class">
+          <Header />
           <NavBar />
           <Component {...pageProps} />
           <Footer />
